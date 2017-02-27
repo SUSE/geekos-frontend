@@ -21,9 +21,9 @@
         workforceid: this.$route.params.workforceid
       }
     },
-    mounted: function () {
+    activated: function () {
       var component = this
-      this.axios.get('http://localhost:3000/api/users/' + this.workforceid)
+      this.axios.get('http://localhost:3000/api/users/' + this.$route.params.workforceid)
         .then(function (response) {
           component.geeko = response.data.user
           console.log(response.data.user)
