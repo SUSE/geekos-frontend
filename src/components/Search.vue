@@ -133,6 +133,7 @@
     border-bottom: #02d35f solid 5px;
     float: left;
     width: 160px;
+    background: #dcdddf;
   }
 
   .result-image {
@@ -171,6 +172,7 @@
     position: absolute;
     top: 0;
     left: 0;
+    background: #fff;
   }
 
   /* front pane, placed above back */
