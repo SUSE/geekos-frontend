@@ -7,8 +7,12 @@
       </div>
       <div class="col-5-12">
         <ul class="nav">
-          <li><router-link :to="{ name: 'search' }">Search</router-link></li>
-          <li><router-link :to="{ name: 'teams' }">Teams</router-link></li>
+          <li>
+            <router-link :to="{ name: 'search' }">Search</router-link>
+          </li>
+          <li>
+            <router-link :to="{ name: 'teams' }">Teams</router-link>
+          </li>
           <li><a href="http://floor.suse.de">Offices</a></li>
         </ul>
       </div>
@@ -17,9 +21,13 @@
 
 
     <div class="content grid grid-pad">
-      <div class="col-1-1">
+      <div id ="content" class="col-1-1">
 
-        <router-view></router-view>
+        <transition name="fade">
+          <keep-alive>
+            <router-view></router-view>
+          </keep-alive>
+        </transition>
 
       </div>
     </div>
@@ -50,6 +58,10 @@
   $suse-dark: rgb(51, 51, 51);
   $suse-grey-light: #dcdddf;
   $suse-grey-mid: #6a7c87;   */
+
+  html {
+      overflow-y:scroll;
+  }
 
   body {
     background: #fff;
@@ -115,5 +127,12 @@
     padding-top: 20px;
     margin-top: 30px !important;
     margin-bottom: 20px !important;
+  }
+
+  .fade-enter-active {
+    transition: opacity .5s
+  }
+  .fade-enter {
+    opacity: 0
   }
 </style>

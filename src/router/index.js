@@ -6,6 +6,8 @@ import Geeko from 'components/Geeko'
 
 Vue.use(Router)
 
+// https://mattstauffer.co/blog/getting-started-using-vues-vue-router-for-single-page-apps
+
 export default new Router({
   mode: 'hash',
   routes: [
