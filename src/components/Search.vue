@@ -9,7 +9,12 @@
 
     <div class="search-results">
       <template v-for="result in search_results">
-        <geekocard :geeko="result"></geekocard>
+        <template v-if="result.object_type === 'user'">
+          <geekocard :geeko="result"></geekocard>
+        </template>
+        <template v-else-if="result.object_type === 'org_unit'">
+          <teamcard :team="result"></teamcard>
+        </template>
       </template>
     </div>
 
@@ -21,11 +26,13 @@
 <script>
   import router from '../router'
   import GeekoCard from './GeekoCard'
+  import TeamCard from './TeamCard'
 
   export default {
     name: 'search',
     components: {
-      geekocard: GeekoCard
+      geekocard: GeekoCard,
+      teamcard: TeamCard
     },
     data () {
       return {
