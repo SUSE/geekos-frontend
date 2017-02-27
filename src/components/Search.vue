@@ -29,7 +29,9 @@
                 <p><i>{{ result.title }}</i></p>
                 <p v-if="result.email"><a v-bind:href="'mailto:' + result.email"><i class="fa fa-envelope-o fa-lg green"></i></a></p>
                 <p v-if="result.phone"><i class="fa fa-phone fa-lg green"></i> {{ result.phone }}</p>
-                <p><router-link :to="{ name: 'geeko', params: { workforceid: result.workforceid} }">Details</router-link></p>
+                <p>
+                  <router-link :to="{ name: 'geeko', params: { workforceid: result.workforceid} }">Details</router-link>
+                </p>
               </div>
             </div>
           </div>
@@ -60,25 +62,27 @@
     },
     methods: {
       search: function () {
-        // var search_icon = $("#search-input").css('background-image')
-        // $("#search-input").css('background-image', "url(/images/ajax-loader.gif)")
-        var search = this
-        this.search_results = []
-        // https://github.com/mzabriskie/axios
-        this.axios.get('http://localhost:3000/api/search', {
-          params: {
-            q: this.search_input
-          }
-        })
-          .then(function (response) {
-            console.log(response.data.search.results)
-            router.replace({ name: 'search', query: {q: search.search_input} })
-            search.search_results = response.data.search.results
-            // $("#search-input").css('background-image', search_icon)
+        if (this.search_input) {
+          // var search_icon = $("#search-input").css('background-image')
+          // $("#search-input").css('background-image', "url(/images/ajax-loader.gif)")
+          var search = this
+          this.search_results = []
+          // https://github.com/mzabriskie/axios
+          this.axios.get('http://localhost:3000/api/search', {
+            params: {
+              q: this.search_input
+            }
           })
-          .catch(function (error) {
-            console.log(error)
-          })
+            .then(function (response) {
+              console.log(response.data.search.results)
+              router.replace({name: 'search', query: {q: search.search_input}})
+              search.search_results = response.data.search.results
+              // $("#search-input").css('background-image', search_icon)
+            })
+            .catch(function (error) {
+              console.log(error)
+            })
+        }
       }
     },
     mounted () {
