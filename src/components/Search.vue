@@ -13,8 +13,12 @@
         <div class="flip-container search-result" ontouchstart="this.classList.toggle('hover');">
           <div class="flipper">
             <div class="front">
-              <img class="result-image lazyload" v-bind:data-src="result.picture" width="160">
-
+              <template v-if="result.picture == 'http://imagebin.suse.de/2554/img'">
+                <img class="result-image lazyload" v-bind:data-src="gravatar.url(result.email, {s: '160', d: 'retro'})" width="160">
+              </template>
+              <template v-else>
+                <img class="result-image lazyload" v-bind:data-src="result.picture" width="160">
+              </template>
               <div class="result-content">
                 <b>{{ result.fullname }}</b>
               </div>
@@ -41,13 +45,15 @@
 
 
 <script>
-
   import router from '../router'
+  // https://github.com/emerleite/node-gravatar
+  import gravatar from 'gravatar'
 
   export default {
     name: 'search',
     data () {
       return {
+        gravatar: gravatar,
         search_input: this.$route.query.q,
         search_results: []
       }
