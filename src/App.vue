@@ -3,7 +3,9 @@
 
     <header class="header grid grid-pad">
       <div class="col-7-12">
-        <img width="540" height="100" src="./assets/suse_geekos.png" alt="Suse geekos"/>
+        <router-link :to="{ name: 'root' }">
+          <img width="540" height="100" src="./assets/suse_geekos.png" alt="Suse geekos"/>
+        </router-link>
       </div>
       <div class="col-5-12">
         <ul class="nav">
@@ -21,7 +23,7 @@
 
 
     <div class="content grid grid-pad">
-      <div id ="content" class="col-1-1">
+      <div id="content" class="col-1-1">
 
         <transition name="fade">
           <keep-alive>
@@ -60,7 +62,7 @@
   $suse-grey-mid: #6a7c87;   */
 
   html {
-      overflow-y:scroll;
+    overflow-y: scroll;
   }
 
   body {
@@ -132,6 +134,7 @@
   .fade-enter-active {
     transition: opacity .5s
   }
+
   .fade-enter {
     opacity: 0
   }
