@@ -5,12 +5,13 @@
     <h2>SUSE Teams</h2>
 
     <template v-if="root_team">
-      <h3>SUSE R&D</h3>
+
+      <h3><router-link :to="{ name: 'team', params: { teamid: root_team.id} }">SUSE R&D</router-link></h3>
 
       <h3>Groups</h3>
     <template v-for="group in root_team.children">
 
-      <h4>{{group.name}}</h4>
+      <h4><router-link :to="{ name: 'team', params: { teamid: group.id} }">{{group.name}}</router-link></h4>
 
     </template>
 
@@ -21,9 +22,6 @@
 
 
 <script>
-
-  // http://localhost:3000/api/teams/root
-  // http://localhost:3000/api/teams/58b40f0a2fa1995f7cd0c572
 
   export default {
     name: 'teams',

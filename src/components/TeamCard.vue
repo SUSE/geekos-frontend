@@ -11,6 +11,7 @@
         </div>
         <div class="back">
           <div class="result-content">
+            <router-link :to="{ name: 'team', params: { teamid: team.id} }">Details</router-link>
           </div>
         </div>
       </div>
