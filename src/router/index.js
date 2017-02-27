@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+
 import Search from 'components/Search'
 import Teams from 'components/Teams'
 import Geeko from 'components/Geeko'

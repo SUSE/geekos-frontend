@@ -9,37 +9,9 @@
 
     <div class="search-results">
       <template v-for="result in search_results">
-
-        <div class="flip-container search-result" ontouchstart="this.classList.toggle('hover');">
-          <div class="flipper">
-            <div class="front">
-              <template v-if="result.picture == 'http://imagebin.suse.de/2554/img'">
-                <img class="result-image lazyload" v-bind:data-src="gravatar.url(result.email, {s: '160', d: 'retro'})" width="160">
-              </template>
-              <template v-else>
-                <img class="result-image lazyload" v-bind:data-src="result.picture" width="160">
-              </template>
-              <div class="result-content">
-                <b>{{ result.fullname }}</b>
-              </div>
-            </div>
-            <div class="back">
-              <div class="result-content">
-                <h4>{{ result.fullname }}</h4>
-                <p><i>{{ result.title }}</i></p>
-                <p v-if="result.email"><a v-bind:href="'mailto:' + result.email"><i class="fa fa-envelope-o fa-lg green"></i></a></p>
-                <p v-if="result.phone"><i class="fa fa-phone fa-lg green"></i> {{ result.phone }}</p>
-                <p>
-                  <router-link :to="{ name: 'geeko', params: { workforceid: result.workforceid} }">Details</router-link>
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
+        <geekocard :geeko="result"></geekocard>
       </template>
     </div>
-
 
   </div>
   </div>
@@ -48,14 +20,15 @@
 
 <script>
   import router from '../router'
-  // https://github.com/emerleite/node-gravatar
-  import gravatar from 'gravatar'
+  import GeekoCard from './GeekoCard'
 
   export default {
     name: 'search',
+    components: {
+      geekocard: GeekoCard
+    },
     data () {
       return {
-        gravatar: gravatar,
         search_input: this.$route.query.q,
         search_results: []
       }
@@ -122,69 +95,6 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-  }
-
-  .search-result {
-    margin: auto;
-    margin: 1em 2em 1em 3em;
-    border: 1px solid #ccc;
-    margin: 15px;
-    border-top: #02d35f solid 5px;
-    border-bottom: #02d35f solid 5px;
-    float: left;
-    width: 160px;
-    background: #dcdddf;
-  }
-
-  .result-image {
-  }
-
-  .result-content {
-    padding: 10px;
-  }
-
-  /* card flipping */
-
-  .flip-container {
-    perspective: 1000px;
-  }
-
-  /* flip the pane when hovered */
-  .flip-container:hover .flipper, .flip-container.hover .flipper {
-    transform: rotateY(180deg);
-  }
-
-  .flip-container, .front, .back {
-    height: 250px;
-    width: 160px;
-  }
-
-  /* flip speed goes here */
-  .flipper {
-    transition: 0.6s;
-    transform-style: preserve-3d;
-    position: relative;
-  }
-
-  /* hide back of pane during swap */
-  .front, .back {
-    backface-visibility: hidden;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: #fff;
-  }
-
-  /* front pane, placed above back */
-  .front {
-    z-index: 2;
-    /* for firefox 31 */
-    transform: rotateY(0deg);
-  }
-
-  /* back, initially hidden pane */
-  .back {
-    transform: rotateY(180deg);
   }
 
 </style>
