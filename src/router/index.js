@@ -14,7 +14,7 @@ export default new Router({
     {
       path: '/',
       name: 'root',
-      component: Search
+      redirect: { name: 'search' }
     },
     {
       path: '/search',
@@ -31,6 +31,5 @@ export default new Router({
       name: 'geeko',
       component: Geeko
     }
-
   ]
 })
