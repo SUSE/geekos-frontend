@@ -2,7 +2,8 @@
 
   <div id="geeko">
 
-    <h2>Geeko {{workforceid}}</h2>
+    <h2>{{geeko.fullname}}</h2>
+
 
   </div>
 </template>
@@ -16,8 +17,20 @@
     name: 'geeko',
     data () {
       return {
+        geeko: {},
         workforceid: this.$route.params.workforceid
       }
+    },
+    mounted: function () {
+      var component = this
+      this.axios.get('http://localhost:3000/api/users/' + this.workforceid)
+        .then(function (response) {
+          component.geeko = response.data.user
+          console.log(response.data.user)
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
     },
     methods: {
     }
