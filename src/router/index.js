@@ -6,20 +6,21 @@ import Teams from 'components/Teams'
 Vue.use(Router)
 
 export default new Router({
+  mode: 'hash',
   routes: [
     {
       path: '/',
-      name: 'Search',
+      name: 'root',
       component: Search
     },
     {
       path: '/search',
-      name: 'Search',
+      name: 'search',
       component: Search
     },
     {
       path: '/teams',
-      name: 'Teams',
+      name: 'teams',
       component: Teams
     }
   ]

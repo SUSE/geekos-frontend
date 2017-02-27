@@ -44,7 +44,7 @@
     name: 'search',
     data () {
       return {
-        search_input: '',
+        search_input: this.$route.query.q,
         search_results: []
       }
     },
@@ -62,6 +62,7 @@
         })
           .then(function (response) {
             console.log(response.data.search.results)
+            search.$router.replace({ name: 'search', query: {q: search.search_input} })
             search.search_results = response.data.search.results
             // $("#search-input").css('background-image', search_icon)
           })
@@ -69,6 +70,9 @@
             console.log(error)
           })
       }
+    },
+    mounted () {
+      this.search()
     }
   }
 

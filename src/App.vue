@@ -7,8 +7,8 @@
       </div>
       <div class="col-5-12">
         <ul class="nav">
-          <li><router-link to="/search">Search</router-link></li>
-          <li><router-link to="/teams">Teams</router-link></li>
+          <li><router-link :to="{ name: 'search' }">Search</router-link></li>
+          <li><router-link :to="{ name: 'teams' }">Teams</router-link></li>
           <li><a href="http://floor.suse.de">Offices</a></li>
         </ul>
       </div>
