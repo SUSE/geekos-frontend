@@ -7,8 +7,8 @@
       </div>
       <div class="col-5-12">
         <ul class="nav">
-          <li class="active"><a href="/search">Search</a></li>
-          <li>Teams</li>
+          <li><router-link to="/search">Search</router-link></li>
+          <li><router-link to="/teams">Teams</router-link></li>
           <li><a href="http://floor.suse.de">Offices</a></li>
         </ul>
       </div>
@@ -105,7 +105,7 @@
     background-color: #02d35f;
   }
 
-  .nav .active {
+  .nav .router-link-active {
     background-color: #02d35f;
   }
 

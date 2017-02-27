@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Search from 'components/Search'
+import Teams from 'components/Teams'
 
 Vue.use(Router)
 
@@ -10,6 +11,16 @@ export default new Router({
       path: '/',
       name: 'Search',
       component: Search
+    },
+    {
+      path: '/search',
+      name: 'Search',
+      component: Search
+    },
+    {
+      path: '/teams',
+      name: 'Teams',
+      component: Teams
     }
   ]
 })
