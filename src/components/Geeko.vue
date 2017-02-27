@@ -1,8 +1,8 @@
 <template>
 
-  <div id="teams">
+  <div id="geeko">
 
-    <h2>Geeko Teams</h2>
+    <h2>Geeko {{workforceid}}</h2>
 
   </div>
 </template>
@@ -10,13 +10,13 @@
 
 <script>
 
-  // http://localhost:3000/api/teams/root
-  // http://localhost:3000/api/teams/58b40f0a2fa1995f7cd0c572
+  // http://localhost:3000/api/users/01377
 
   export default {
-    name: 'teams',
+    name: 'geeko',
     data () {
       return {
+        workforceid: this.$route.params.workforceid
       }
     },
     methods: {
@@ -28,7 +28,7 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
-  #teams {
+  #geeko {
     text-align: center;
   }
 
