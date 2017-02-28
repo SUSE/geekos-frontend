@@ -12,7 +12,7 @@
       </template>
     </div>
 
-    <template v-if="team.children.length">
+    <template v-if="team.children && team.children.length">
       <h3>Sub-teams</h3>
       <div id="sub_teams">
         <template v-for="team in team.children">
@@ -26,6 +26,7 @@
 
 
 <script>
+  import config from '../config'
   import GeekoCard from './GeekoCard'
   import TeamCard from './TeamCard'
 
@@ -42,7 +43,7 @@
     },
     activated: function () {
       var component = this
-      this.axios.get('http://localhost:3000/api/teams/' + this.$route.params.teamid)
+      this.axios.get(config.backend_url + '/api/teams/' + this.$route.params.teamid)
         .then(function (response) {
           component.team = response.data.org_unit
           console.log(response.data.org_unit)

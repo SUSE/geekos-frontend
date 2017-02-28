@@ -5,12 +5,7 @@
     <div class="flip-container search-result" ontouchstart="this.classList.toggle('hover');">
       <div class="flipper">
         <div class="front">
-          <template v-if="geeko.picture == 'http://imagebin.suse.de/2554/img'">
-            <img class="result-image lazyload" v-bind:data-src="gravatar.url(geeko.email, {s: '160', d: 'retro'})" width="160">
-          </template>
-          <template v-else>
-            <img class="result-image lazyload" v-bind:data-src="geeko.picture" width="160">
-          </template>
+          <img class="result-image lazyload" :data-src="avatar" width="160">
           <div class="result-content">
             <b>{{ geeko.fullname }}</b>
           </div>
@@ -19,7 +14,7 @@
           <div class="result-content">
             <h4>{{ geeko.fullname }}</h4>
             <p><i>{{ geeko.title }}</i></p>
-            <p v-if="geeko.email"><a v-bind:href="'mailto:' + geeko.email"><i class="fa fa-envelope-o fa-lg green"></i></a></p>
+            <p v-if="geeko.email"><a :href="'mailto:' + geeko.email"><i class="fa fa-envelope-o fa-lg green"></i></a></p>
             <p v-if="geeko.phone"><i class="fa fa-phone fa-lg green"></i> {{ geeko.phone }}</p>
             <p>
               <router-link :to="{ name: 'geeko', params: { workforceid: geeko.workforceid} }">Details</router-link>
@@ -40,9 +35,13 @@
   export default {
     name: 'geekocard',
     props: ['geeko'],
-    data () {
-      return {
-        gravatar: gravatar
+    computed: {
+      avatar: function () {
+        if (this.geeko.picture === 'http://imagebin.suse.de/2554/img') {
+          return gravatar.url(this.geeko.email, {s: '160', d: 'retro'})
+        } else {
+          return this.geeko.picture
+        }
       }
     }
   }

@@ -25,6 +25,7 @@
 
 <script>
   import router from '../router'
+  import config from '../config'
   import GeekoCard from './GeekoCard'
   import TeamCard from './TeamCard'
 
@@ -48,7 +49,7 @@
           var search = this
           this.search_results = []
           // https://github.com/mzabriskie/axios
-          this.axios.get('http://localhost:3000/api/search', {
+          this.axios.get(config.backend_url + '/api/search', {
             params: {
               q: this.search_input
             }

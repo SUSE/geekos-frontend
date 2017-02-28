@@ -10,8 +10,7 @@
 
 
 <script>
-
-  // http://localhost:3000/api/users/01377
+  import config from '../config'
 
   export default {
     name: 'geeko',
@@ -23,7 +22,7 @@
     },
     activated: function () {
       var component = this
-      this.axios.get('http://localhost:3000/api/users/' + this.$route.params.workforceid)
+      this.axios.get(config.backend_url + '/api/users/' + this.$route.params.workforceid)
         .then(function (response) {
           component.geeko = response.data.user
           console.log(response.data.user)

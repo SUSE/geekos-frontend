@@ -22,6 +22,7 @@
 
 
 <script>
+  import config from '../config'
 
   export default {
     name: 'teams',
@@ -34,7 +35,7 @@
     },
     mounted: function () {
       var component = this
-      this.axios.get('http://localhost:3000/api/teams/root')
+      this.axios.get(config.backend_url + '/api/teams/root')
         .then(function (response) {
           component.root_team = response.data.org_unit
           console.log(response.data)
