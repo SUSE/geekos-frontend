@@ -25,7 +25,6 @@
       this.axios.get(config.backend_url + '/api/users/' + this.$route.params.workforceid)
         .then(function (response) {
           component.geeko = response.data.user
-          console.log(response.data.user)
         })
         .catch(function (error) {
           console.log(error)

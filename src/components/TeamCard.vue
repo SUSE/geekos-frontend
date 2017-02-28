@@ -58,7 +58,6 @@
   }
 
   /* card flipping */
-
   .flip-container {
     perspective: 1000px;
   }

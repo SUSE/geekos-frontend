@@ -38,7 +38,6 @@
       this.axios.get(config.backend_url + '/api/teams/root')
         .then(function (response) {
           component.root_team = response.data.org_unit
-          console.log(response.data)
         })
         .catch(function (error) {
           console.log(error)
