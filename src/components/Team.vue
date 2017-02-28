@@ -47,7 +47,7 @@
         team: {}
       }
     },
-    activated: function () {
+    mounted: function () {
       this.fetchData()
     },
     watch: {
