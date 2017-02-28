@@ -50,6 +50,9 @@
     activated: function () {
       this.fetchData()
     },
+    watch: {
+      'teamid': 'fetchData'
+    },
     methods: {
       fetchData () {
         var component = this
