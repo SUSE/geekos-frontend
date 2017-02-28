@@ -36,7 +36,8 @@ export default new Router({
     {
       path: '/team/:teamid',
       name: 'team',
-      component: Team
+      component: Team,
+      props: true
     }
   ]
 })
