@@ -5,7 +5,7 @@
     <div class="flip-container search-result" ontouchstart="this.classList.toggle('hover');">
       <div class="flipper">
         <div class="front">
-            <img class="result-image" v-lazy="avatar" width="160">
+          <img class="result-image" v-lazy="avatar" width="160">
           <div class="result-content">
             <b>{{ geeko.fullname }}</b>
           </div>

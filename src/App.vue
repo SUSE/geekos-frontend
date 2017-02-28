@@ -138,4 +138,11 @@
   .fade-enter {
     opacity: 0
   }
+
+  .flex-center {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 </style>

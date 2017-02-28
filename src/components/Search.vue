@@ -7,7 +7,7 @@
 
     <div class="search-results-info" v-if="search_results.length">{{search_results.length}} results found</div>
 
-    <div class="search-results">
+    <div class="flex-center">
       <template v-for="result in search_results">
         <template v-if="result.object_type === 'user'">
           <geekocard :geeko="result"></geekocard>
@@ -96,13 +96,6 @@
   .search-results-info {
     margin-top: 5px;
     color: #6a7c87;
-  }
-
-  .search-results {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
   }
 
 </style>

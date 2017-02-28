@@ -4,9 +4,10 @@
 
     <h2>{{team.name}}</h2>
 
+    <img :src="team.img" width="160">
 
     <h3>Team members</h3>
-    <div id="team_members">
+    <div class="flex-center">
       <template v-for="geeko in team.members">
         <geekocard :geeko="geeko"></geekocard>
       </template>
@@ -14,7 +15,7 @@
 
     <template v-if="team.children && team.children.length">
       <h3>Sub-teams</h3>
-      <div id="sub_teams">
+      <div class="flex-center">
         <template v-for="team in team.children">
           <teamcard :team="team"></teamcard>
         </template>
@@ -74,20 +75,6 @@
 
   #team {
     text-align: center;
-  }
-
-  #team_members {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  #sub_teams {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
   }
 
 </style>

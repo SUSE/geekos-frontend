@@ -6,14 +6,17 @@
 
     <template v-if="root_team">
 
-      <h3><router-link :to="{ name: 'team', params: { teamid: root_team.id} }">SUSE R&D</router-link></h3>
+      <h3>SUSE R&D</h3>
+      <div class="flex-center">
+        <teamcard :team="root_team"></teamcard>
+      </div>
 
       <h3>Groups</h3>
-    <template v-for="group in root_team.children">
-
-      <h4><router-link :to="{ name: 'team', params: { teamid: group.id} }">{{group.name}}</router-link></h4>
-
-    </template>
+      <div class="flex-center">
+        <template v-for="group in root_team.children">
+          <teamcard :team="group"></teamcard>
+        </template>
+      </div>
 
     </template>
 
@@ -23,16 +26,19 @@
 
 <script>
   import config from '../config'
+  import TeamCard from './TeamCard'
 
   export default {
     name: 'teams',
+    components: {
+      teamcard: TeamCard
+    },
     data () {
       return {
         root_team: null
       }
     },
-    methods: {
-    },
+    methods: {},
     mounted: function () {
       var component = this
       this.axios.get(config.backend_url + '/api/teams/root')

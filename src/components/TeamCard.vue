@@ -5,6 +5,7 @@
     <div class="flip-container search-result" ontouchstart="this.classList.toggle('hover');">
       <div class="flipper">
         <div class="front">
+          <img class="result-image" :src="team.img" width="160">
           <div class="result-content">
             <b>{{ team.name }}</b>
           </div>
