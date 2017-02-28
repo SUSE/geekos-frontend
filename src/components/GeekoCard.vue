@@ -31,6 +31,7 @@
 <script>
   // https://github.com/emerleite/node-gravatar
   import gravatar from 'gravatar'
+  import config from '../config'
 
   export default {
     name: 'geekocard',
@@ -45,7 +46,7 @@
         if (this.geeko.picture === 'http://imagebin.suse.de/2554/img') {
           return gravatar.url(this.geeko.email, {s: '160', d: 'retro'})
         } else {
-          return this.geeko.picture
+          return this.geeko.picture.replace('http://localhost:3000', config.backend_url)
         }
       }
     }

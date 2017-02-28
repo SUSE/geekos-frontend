@@ -25,7 +25,12 @@
 
   export default {
     name: 'teamcard',
-    props: ['team']
+    props: {
+      team: {
+        type: Object,
+        required: true
+      }
+    }
   }
 
 </script>

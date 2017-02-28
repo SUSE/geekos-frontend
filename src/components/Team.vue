@@ -38,7 +38,7 @@
     },
     props: {
       teamid: {
-        type: Number,
+        type: String,
         required: true
       }
     },
