@@ -42,17 +42,27 @@
       }
     },
     activated: function () {
-      var component = this
-      this.axios.get(config.backend_url + '/api/teams/' + this.$route.params.teamid)
-        .then(function (response) {
-          component.team = response.data.org_unit
-          console.log(response.data.org_unit)
-        })
-        .catch(function (error) {
-          console.log(error)
-        })
+      this.fetchData()
     },
-    methods: {}
+    updated: function () {
+      console.log('team updated')
+    },
+    watch: {
+      // call again the method if the route changes
+      '$route': 'fetchData'
+    },
+    methods: {
+      fetchData () {
+        var component = this
+        this.axios.get(config.backend_url + '/api/teams/' + this.$route.params.teamid)
+          .then(function (response) {
+            component.team = response.data.org_unit
+          })
+          .catch(function (error) {
+            console.log(error)
+          })
+      }
+    }
   }
 
 </script>

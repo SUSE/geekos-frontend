@@ -34,7 +34,12 @@
 
   export default {
     name: 'geekocard',
-    props: ['geeko'],
+    props: {
+      geeko: {
+        type: Object,
+        required: true
+      }
+    },
     computed: {
       avatar: function () {
         if (this.geeko.picture === 'http://imagebin.suse.de/2554/img') {
