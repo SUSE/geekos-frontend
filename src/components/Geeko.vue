@@ -4,16 +4,19 @@
 
     <h2>{{geeko.fullname}}</h2>
 
-
   </div>
 </template>
 
 
 <script>
   import config from '../config'
+  import TeamCard from './TeamCard'
 
   export default {
     name: 'geeko',
+    components: {
+      teamcard: TeamCard
+    },
     data () {
       return {
         geeko: {},

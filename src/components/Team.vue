@@ -56,6 +56,7 @@
     },
     methods: {
       fetchData () {
+        this.team = {}
         var component = this
         this.axios.get(config.backend_url + '/api/teams/' + this.teamid)
           .then(function (response) {
