@@ -8,6 +8,11 @@
         </router-link>
       </div>
       <div class="col-5-12">
+
+        <template>
+          <login/>
+        </template>
+
         <ul class="nav">
           <li>
             <router-link :to="{ name: 'search' }">Search</router-link>
@@ -17,6 +22,7 @@
           </li>
           <li><a href="http://floor.suse.de">Offices</a></li>
         </ul>
+
       </div>
 
     </header>
@@ -45,11 +51,18 @@
   </div>
 </template>
 
+
 <script>
+  import Login from './components/Login'
+
   export default {
-    name: 'app'
+    name: 'app',
+    components: {
+      login: Login
+    }
   }
 </script>
+
 
 <style>
   /* https://thisisdallas.github.io/Simple-Grid/
@@ -98,7 +111,7 @@
     padding: 0;
     margin: 0;
     position: relative;
-    top: 80px;
+    top: 40px;
     left: 107px;
   }
 
