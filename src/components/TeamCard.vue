@@ -5,7 +5,7 @@
     <div class="flip-container search-result" ontouchstart="this.classList.toggle('hover');">
       <div class="flipper">
         <div class="front">
-          <img class="result-image" :src="team.img" width="160">
+          <img class="result-image" :src="avatar" width="160">
           <div class="result-content">
             <b>{{ team.name }}</b>
           </div>
@@ -30,6 +30,16 @@
       team: {
         type: Object,
         required: true
+      }
+    },
+    computed: {
+      avatar: function () {
+        if (this.team.img === 'http://imagebin.suse.de/2562/img') {
+        // default team logo
+          return require('assets/team_default_avatar.jpg')
+        } else {
+          return this.team.img
+        }
       }
     }
   }

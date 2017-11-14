@@ -4,7 +4,7 @@
 
     <h2>{{team.name}}</h2>
 
-    <img :src="team.img" width="160">
+    <img :src="avatar" width="160">
 
     <h3>Team members</h3>
     <div class="flex-center">
@@ -41,6 +41,16 @@
       teamid: {
         type: String,
         required: true
+      }
+    },
+    computed: {
+      avatar: function () {
+        if (this.team.img === 'http://imagebin.suse.de/2562/img') {
+        // default team logo
+          return require('assets/team_default_avatar.jpg')
+        } else {
+          return this.team.img
+        }
       }
     },
     data () {
