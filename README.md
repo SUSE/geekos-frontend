@@ -1,10 +1,12 @@
-# Vue.js frontent for geekos.suse.com employee browser
+# Vue.js frontent for geekos.suse.com, the SUSE employee browser
 
 
 ## Install dependencies
 
-> sudo zypper install nodejs7
-> sudo npm install -g vue-cli yarn
+```
+sudo zypper install nodejs7
+sudo npm install -g vue-cli yarn
+```
 
 
 ## Build Setup
@@ -33,3 +35,10 @@ yarn test
 ```
 
 For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
+
+## Backend
+
+The backend is developed at https://github.com/SUSE/HiGecko, in branch `merge_with_floor`. See the [README](https://github.com/SUSE/HiGecko/blob/merge_with_floor/README.md) for setup instructions.
+
+Configure the backend url in `src/config.js`.
