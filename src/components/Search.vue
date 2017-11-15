@@ -87,7 +87,6 @@
     border-radius: 4px;
     font-size: 16px;
     background-color: white;
-    background-image: image-url('icons/search.png');
     background-position: 10px 12px;
     background-repeat: no-repeat;
     padding: 12px 20px 12px 40px;
