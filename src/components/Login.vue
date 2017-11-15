@@ -8,7 +8,7 @@
         <router-link :to="{ name: 'geeko', params: { workforceid: user.workforceid} }">{{user.fullname}}</router-link>
         [<a href="#" v-on:click='logOut'>Logout</a>]
 
-        <img class="user-login-image" :src="avatar">
+        <img class="user-login-image" :src="avatar()">
       </template>
 
       <template v-else>
@@ -31,8 +31,8 @@
 
 
 <script>
-  import gravatar from 'gravatar'
   import config from '../config'
+  import { avatarImage } from '../helpers'
 
   export default {
     name: 'login',
@@ -42,15 +42,6 @@
         user: undefined
       }
     },
-    computed: {
-      avatar: function () {
-        if (this.user.picture === 'http://imagebin.suse.de/2554/img') {
-          return gravatar.url(this.user.email, {s: '160', d: 'retro'})
-        } else {
-          return this.user.picture.replace('http://localhost:3000', config.backend_url)
-        }
-      }
-    },
     mounted: function () {
       if (this.$route.query.auth_token) {
         localStorage.auth_token = this.$route.query.auth_token
@@ -58,6 +49,9 @@
       this.verifyAuthToken()
     },
     methods: {
+      avatar () {
+        return avatarImage(this.user.image, this.user.email)
+      },
       verifyAuthToken () {
         // keeping self-reference for the promise
         var login = this
@@ -102,7 +96,5 @@
     background-color: white;
     padding: 5px 10px 5px 10px;
   }
-
-
 
 </style>

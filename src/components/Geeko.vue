@@ -4,12 +4,20 @@
 
     <h2>{{geeko.fullname}}</h2>
 
+    <img :src="avatar()">
+
+    <p><i>{{ geeko.title }}</i></p>
+    <p v-if="geeko.email"><a :href="'mailto:' + geeko.email"><i class="email-icon fa fa-envelope-o fa-lg green"></i>{{geeko.email}}</a></p>
+    <p v-if="geeko.phone"><i class="fa fa-phone fa-lg green"></i> {{ geeko.phone }}</p>
+
+
   </div>
 </template>
 
 
 <script>
   import config from '../config'
+  import { avatarImage } from '../helpers'
   import TeamCard from './TeamCard'
 
   export default {
@@ -34,6 +42,9 @@
         })
     },
     methods: {
+      avatar () {
+        return avatarImage(this.geeko.image, this.geeko.email)
+      }
     }
   }
 
@@ -44,6 +55,10 @@
 
   #geeko {
     text-align: center;
+  }
+
+  .email-icon {
+    margin-right: 5px;
   }
 
 </style>

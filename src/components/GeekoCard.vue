@@ -5,7 +5,7 @@
     <div class="flip-container search-result" ontouchstart="this.classList.toggle('hover');">
       <div class="flipper">
         <div class="front">
-          <img class="result-image" v-lazy="avatar" width="160">
+          <img class="result-image" v-lazy="avatar(geeko.image, geeko.email)" width="160">
           <div class="result-content">
             <b>{{ geeko.fullname }}</b>
           </div>
@@ -29,9 +29,7 @@
 
 
 <script>
-  // https://github.com/emerleite/node-gravatar
-  import gravatar from 'gravatar'
-  import config from '../config'
+  import { avatarImage } from '../helpers'
 
   export default {
     name: 'geekocard',
@@ -41,13 +39,9 @@
         required: true
       }
     },
-    computed: {
-      avatar: function () {
-        if (this.geeko.picture === 'http://imagebin.suse.de/2554/img') {
-          return gravatar.url(this.geeko.email, {s: '160', d: 'retro'})
-        } else {
-          return this.geeko.picture.replace('http://localhost:3000', config.backend_url)
-        }
+    methods: {
+      avatar (image, email) {
+        return avatarImage(image, email)
       }
     }
   }
