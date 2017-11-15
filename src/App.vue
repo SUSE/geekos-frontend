@@ -2,10 +2,12 @@
   <div id="app">
 
     <header class="header grid grid-pad">
-      <div class="col-7-12">
+
+      <div class="col-7-12 header-logo">
         <router-link :to="{ name: 'root' }">
           <img width="540" height="100" src="./assets/suse_geekos.png" alt="Suse geekos"/>
         </router-link>
+
       </div>
       <div class="col-5-12">
 
@@ -97,10 +99,15 @@
 
   header {
     border-bottom: #02d35f solid 5px;
-    padding-bottom: 15px;
+    padding-top: 10px;
+    padding-bottom: 0px;
   }
 
-  header a, header a:visited, header a:active {
+  .header-logo {
+    padding-bottom: 10px;
+  }
+
+  .nav a, .nav a:visited, .nav a:active {
     text-decoration: none;
     color: rgb(51, 51, 51);
   }
@@ -111,7 +118,7 @@
     padding: 0;
     margin: 0;
     position: relative;
-    top: 40px;
+    bottom: -20px;
     left: 107px;
   }
 

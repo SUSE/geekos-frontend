@@ -1,21 +1,21 @@
 <template>
 
 
-    <div id="login">
+    <div class="login">
 
-      <div v-if="this.user">
+      <template v-if="this.user">
         Welcome
         <router-link :to="{ name: 'geeko', params: { workforceid: user.workforceid} }">{{user.fullname}}</router-link>
-        <a href="#" v-on:click='logOut'>Logout</a>
+        [<a href="#" v-on:click='logOut'>Logout</a>]
 
         <img class="user-login-image" :src="avatar">
-      </div>
+      </template>
 
-      <div v-else>
-        <form id="login-form" data-type="html" class="margins-updown" action="https://login.microfocus.com/nidp/idff/sso?id=6&amp;sid=0" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="Hc4w+2dSSHPOxQf25PB5GPtUEY8Y5UPtpPzseFQ6oxuTfQJaUIU+1E7MqhkutXn+doXaevFYy+iKbHyd1uQEVA==" />
+      <template v-else>
+        <form id="login-form" data-type="html" action="https://login.microfocus.com/nidp/idff/sso?id=6&amp;sid=0" accept-charset="UTF-8" method="post">
 
-        <input type="text" name="Ecom_User_ID" value="" class="form-control" placeholder="Enter your username..." autofocus="autofocus" tabindex="1" required="required" data-error-field="alert" aria-label="Enter your username..." />
-        <input type="password" name="Ecom_Password" value="" class="form-control" placeholder="Enter your password..." tabindex="2" required="required" data-error-field="alert" aria-label="Enter your password..." />
+        <input type="text" size="15" name="Ecom_User_ID" value="" placeholder="suse.com username..." autofocus="autofocus" tabindex="1" required="required" aria-label="Enter your suse.com username..." />
+        <input type="password" size="15" name="Ecom_Password" value="" placeholder="password..." tabindex="2" required="required" aria-label="Enter your password..." />
 
         <input type="hidden" name="option" id="option" value="credential" />
         <input type="hidden" name="target" id="target" :value="this.saml_start_url" />
@@ -23,7 +23,7 @@
 
         </form>
 
-      </div>
+      </template>
 
     </div>
 
@@ -92,5 +92,17 @@
       max-width: 50px;
       border-radius: 50%;
   }
+
+  .login input {
+    width: 160px;
+    box-sizing: border-box;
+    border: 2px solid #dcdddf;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    padding: 5px 10px 5px 10px;
+  }
+
+
 
 </style>
