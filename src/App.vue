@@ -9,7 +9,7 @@
         </router-link>
 
       </div>
-      <div class="col-5-12">
+      <div class="col-5-12 header-right align-right">
 
         <template>
           <login/>
@@ -22,7 +22,7 @@
           <li>
             <router-link :to="{ name: 'teams' }">Teams</router-link>
           </li>
-          <li><a href="http://floor.suse.de">Offices</a></li>
+          <li><a href="http://floor.suse.de"><i class="fa fa-external-link" aria-hidden="true"></i> Offices</a></li>
         </ul>
 
       </div>
@@ -97,6 +97,15 @@
     color: #02d35f;
   }
 
+  .gray {
+    color: #6a7c87;
+  }
+
+
+  .align-right {
+    text-align: right;
+  }
+
   header {
     border-bottom: #02d35f solid 5px;
     padding-top: 10px;
@@ -117,9 +126,6 @@
     text-align: center;
     padding: 0;
     margin: 0;
-    position: relative;
-    bottom: -20px;
-    left: 107px;
   }
 
   .nav li {
@@ -165,4 +171,12 @@
     flex-wrap: wrap;
     justify-content: center;
   }
+</style>
+
+<style scoped>
+
+  .header-right {
+    height: 115px;
+  }
+
 </style>

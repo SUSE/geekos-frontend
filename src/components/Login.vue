@@ -6,9 +6,10 @@
       <template v-if="this.user">
         Welcome
         <router-link :to="{ name: 'geeko', params: { workforceid: user.workforceid} }">{{user.fullname}}</router-link>
-        [<a href="#" v-on:click='logOut'>Logout</a>]
-
-        <img class="user-login-image" :src="avatar">
+        <a href="#" v-on:click='logOut'><i class="fa fa-sign-out gray" aria-hidden="true"></i></a>
+        <router-link :to="{ name: 'geeko', params: { workforceid: user.workforceid} }">
+          <img class="user-login-image" :src="avatar">
+        </router-link>
       </template>
 
       <template v-else>
@@ -19,7 +20,7 @@
 
         <input type="hidden" name="option" id="option" value="credential" />
         <input type="hidden" name="target" id="target" :value="this.saml_start_url" />
-        <button class='router-link-active' id='login_button' tabindex='3' type='submit'>login</button>
+        <button id='login-button' tabindex='3' type='submit'>login</button>
 
         </form>
 
@@ -87,6 +88,12 @@
   .user-login-image {
       max-width: 50px;
       border-radius: 50%;
+      vertical-align: top;
+      margin-left: 15px;
+  }
+
+  .login {
+    height: 75px;
   }
 
   .login input {
@@ -96,6 +103,15 @@
     border-radius: 4px;
     font-size: 16px;
     background-color: white;
+    padding: 5px 10px 5px 10px;
+  }
+
+  #login-button {
+    background-color: #02d35f;
+    box-sizing: border-box;
+    border: 2px solid #dcdddf;
+    border-radius: 4px;
+    font-size: 16px;
     padding: 5px 10px 5px 10px;
   }
 

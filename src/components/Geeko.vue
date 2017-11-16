@@ -12,12 +12,17 @@
     <p v-if="geeko.mobile"><i class="fa fa-phone fa-lg green"></i> {{ geeko.mobile }}</p>
 
     <p>workforceid: {{ geeko.workforceid }}</p>
-    <p>suse.com username: {{ geeko.username }}</p>
+    <p>
+    internal username: {{ geeko.username }}  
+    - <a v-bind:href="'https://intra.microfocus.net/sspr/private/peoplesearch/#/search/table?query=' + geeko.username">innerweb</a>
+    - <a :href="'https://externaltools.suse.de/admin/underlings/' + geeko.workforceid">externaltools</a>
+    - <a :href="'https://w3.suse.de/~' + geeko.username">export on w3.suse.de</a>
+ 
+    </p>
     <p>managerworkforceid: {{ geeko.managerworkforceid }}</p>
     <p>costcenter: {{ geeko.costcenter }}</p>
     <p>country: {{ geeko.country }}</p>
 
-    <p>ismanager: {{ geeko.ismanager }}</p>
     <p>floor: {{ geeko.floor }}</p>
 
 
