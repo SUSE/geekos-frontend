@@ -4,14 +4,17 @@
 
     <div class="flip-container search-result" ontouchstart="this.classList.toggle('hover');">
       <div class="flipper">
-        <router-link :to="{ name: 'team', params: { teamid: team.id} }">
-          <div class="front">
-            <img class="result-image" :src="avatar" width="160">
-            <div class="result-content">
-              <b>{{ team.name }}</b>
-            </div>
+        <div class="front">
+          <img class="result-image" :src="avatar" width="160">
+          <div class="result-content">
+            <b>{{ team.name }}</b>
           </div>
-        </router-link>
+        </div>
+        <div class="back">
+          <div class="result-content">
+            <router-link :to="{ name: 'team', params: { teamid: team.id} }">Details</router-link>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -61,11 +64,6 @@
   .result-image {
   }
 
-  a, a:visited, a:active {
-    text-decoration: none;
-    color: rgb(51, 51, 51);
-  }
-
   .result-content {
     padding: 10px;
   }
@@ -75,9 +73,21 @@
     perspective: 1000px;
   }
 
+  /* flip the pane when hovered */
+  .flip-container:hover .flipper, .flip-container.hover .flipper {
+    transform: rotateY(180deg);
+  }
+
   .flip-container, .front, .back {
     height: 250px;
     width: 160px;
+  }
+
+  /* flip speed goes here */
+  .flipper {
+    transition: 0.6s;
+    transform-style: preserve-3d;
+    position: relative;
   }
 
   /* hide back of pane during swap */
@@ -89,5 +99,16 @@
     background: #fff;
   }
 
+  /* front pane, placed above back */
+  .front {
+    z-index: 2;
+    /* for firefox 31 */
+    transform: rotateY(0deg);
+  }
+
+  /* back, initially hidden pane */
+  .back {
+    transform: rotateY(180deg);
+  }
 
 </style>
