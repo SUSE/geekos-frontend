@@ -5,9 +5,15 @@
     <h2>Geeko Search: Find your colleagues!</h2>
     <input id="search-input" class="search" v-on:keyup.enter="search" v-model.trim="query" placeholder="What are you searching for?" autofocus>
 
+    <div class="search-results-info" v-if="search_history().length">
+      your last searches:
+      <template v-for="q in search_history().slice(0, 5)">
+        <a href="#" v-on:click='query = q; search()'>{{ q }}</a>,
+      </template>
+    </div>
+
     <div class="search-results-info" v-if="search_results.length">
       {{search_results.length}} {{'result' | pluralize(search_results.length)}}  found
-
     </div>
 
     <div class="flex-center">
@@ -58,12 +64,20 @@
           })
             .then(function (response) {
               search.search_results = response.data.search.results
+              let searchHistory = search.search_history().slice(0, 5)
+              console.log(searchHistory.indexOf(search.query))
+              if (!(searchHistory.indexOf(search.query) >= 0)) searchHistory.unshift(search.query)
+              localStorage.search_history = JSON.stringify(searchHistory)
               // $("#search-input").css('background-image', search_icon)
             })
             .catch(function (error) {
               console.log(error)
             })
         }
+      },
+      search_history: function () {
+        let searchHistory = localStorage.getItem('search_history')
+        return (searchHistory ? JSON.parse(searchHistory) : [])
       }
     },
     mounted () {
