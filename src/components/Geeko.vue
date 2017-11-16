@@ -27,8 +27,7 @@
     },
     data () {
       return {
-        geeko: {},
-        workforceid: this.$route.params.workforceid
+        geeko: {}
       }
     },
     computed: {
@@ -36,15 +35,25 @@
         return helpers.avatarImage(this.geeko.image, this.geeko.email)
       }
     },
-    activated: function () {
-      var component = this
-      this.axios.get(config.backend_url + '/api/users/' + this.$route.params.workforceid)
-        .then(function (response) {
-          component.geeko = response.data.user
-        })
-        .catch(function (error) {
-          console.log(error)
-        })
+    mounted: function () {
+      this.loadUser(this.$route.params.workforceid)
+    },
+    methods: {
+      loadUser: function (workforceid) {
+        var component = this
+        this.axios.get(config.backend_url + '/api/users/' + workforceid)
+          .then(function (response) {
+            component.geeko = response.data.user
+          })
+          .catch(function (error) {
+            console.log(error)
+          })
+      }
+    },
+    watch: {
+      '$route.params.workforceid' (newId, oldId) {
+        if (newId) { this.loadUser(newId) }
+      }
     }
   }
 
