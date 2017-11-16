@@ -12,6 +12,14 @@ Vue.use(VueAxios, axios)
 // https://github.com/hilongjw/vue-lazyload
 Vue.use(VueLazyload)
 
+Vue.filter('pluralize', function (value, count) {
+  if (count > 1) {
+    return value + 's'
+  } else {
+    return value
+  }
+})
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

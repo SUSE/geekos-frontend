@@ -5,7 +5,10 @@
     <h2>Geeko Search: Find your colleagues!</h2>
     <input id="search-input" class="search" v-on:keyup.enter="search" v-model.trim="search_input" placeholder="What are you searching for?" autofocus>
 
-    <div class="search-results-info" v-if="search_results.length">{{search_results.length}} results found</div>
+    <div class="search-results-info" v-if="search_results.length">
+      {{search_results.length}} {{'result' | pluralize(search_results.length)}}  found
+
+    </div>
 
     <div class="flex-center">
       <template v-for="result in search_results">

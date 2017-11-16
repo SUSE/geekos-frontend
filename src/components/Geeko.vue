@@ -28,8 +28,7 @@
     data () {
       return {
         geeko: {},
-        workforceid: this.$route.params.workforceid,
-        helpers: helpers
+        workforceid: this.$route.params.workforceid
       }
     },
     computed: {

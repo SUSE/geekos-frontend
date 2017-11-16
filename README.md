@@ -2,7 +2,7 @@
 
 ![geekos suse com_screen](https://user-images.githubusercontent.com/582520/32779742-2cfd47a6-c93f-11e7-937a-feef874afcba.jpg)
 
-As part of [SUSE Hackweek](https://hackweek.suse.com/16/projects/teams-dot-suse-dot-com-onboarding-and-floor) we are working on a SUSE employee browser that should provide a single entry point to all relevant user data of your colleagues. An automatically updated team structure (like in the [SUSE Orgchart](https://w3.suse.de/%7Emreichel/SUSE_Engineering_OrgChart.pdf)), team descriptions, office locations and user-defined descriptions are planned. 
+As part of [SUSE Hackweek](https://hackweek.suse.com/16/projects/teams-dot-suse-dot-com-onboarding-and-floor) we are working on a SUSE employee browser that should provide a single entry point to all relevant user data of your colleagues. An automatically updated team structure (like in the [SUSE Orgchart](https://w3.suse.de/%7Emreichel/SUSE_Engineering_OrgChart.pdf)), team descriptions, office locations and user-defined descriptions are planned.
 
 Basically this is an aggregation of the data currently scattered in eguide, floor, externaltools, tel, onboarding etc.
 
@@ -16,6 +16,13 @@ sudo npm install -g vue-cli yarn
 
 ## Build Setup
 
+Install nodejs, yarn + vue dependencies systemwide:
+```
+> sudo zypper in nodejs6
+> sudo npm i -g vue-cli yarn
+```
+
+Running the application:
 ``` bash
 # install dependencies
 yarn install
