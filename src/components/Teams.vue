@@ -6,7 +6,7 @@
 
     <template v-if="root_team">
 
-      <h3>SUSE R&D</h3>
+      <h3>SUSE R&amp;D</h3>
       <div class="flex-center">
         <teamcard :team="root_team"></teamcard>
       </div>

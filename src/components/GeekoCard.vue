@@ -5,7 +5,7 @@
     <div class="flip-container search-result" ontouchstart="this.classList.toggle('hover');">
       <div class="flipper">
         <div class="front">
-          <img class="result-image" v-lazy="avatar(geeko.image, geeko.email)" width="160">
+          <img class="result-image" v-lazy="avatar" width="160">
           <div class="result-content">
             <b>{{ geeko.fullname }}</b>
           </div>
@@ -29,7 +29,7 @@
 
 
 <script>
-  import { avatarImage } from '../helpers'
+  import * as helpers from '../helpers'
 
   export default {
     name: 'geekocard',
@@ -39,9 +39,9 @@
         required: true
       }
     },
-    methods: {
-      avatar (image, email) {
-        return avatarImage(image, email)
+    computed: {
+      avatar: function () {
+        return helpers.avatarImage(this.geeko.image, this.geeko.email)
       }
     }
   }

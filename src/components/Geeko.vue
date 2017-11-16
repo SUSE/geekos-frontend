@@ -4,7 +4,7 @@
 
     <h2>{{geeko.fullname}}</h2>
 
-    <img :src="avatar()">
+    <img :src="avatar">
 
     <p><i>{{ geeko.title }}</i></p>
     <p v-if="geeko.email"><a :href="'mailto:' + geeko.email"><i class="email-icon fa fa-envelope-o fa-lg green"></i>{{geeko.email}}</a></p>
@@ -17,7 +17,7 @@
 
 <script>
   import config from '../config'
-  import { avatarImage } from '../helpers'
+  import * as helpers from '../helpers'
   import TeamCard from './TeamCard'
 
   export default {
@@ -28,7 +28,13 @@
     data () {
       return {
         geeko: {},
-        workforceid: this.$route.params.workforceid
+        workforceid: this.$route.params.workforceid,
+        helpers: helpers
+      }
+    },
+    computed: {
+      avatar: function () {
+        return helpers.avatarImage(this.geeko.image, this.geeko.email)
       }
     },
     activated: function () {
@@ -40,11 +46,6 @@
         .catch(function (error) {
           console.log(error)
         })
-    },
-    methods: {
-      avatar () {
-        return avatarImage(this.geeko.image, this.geeko.email)
-      }
     }
   }
 

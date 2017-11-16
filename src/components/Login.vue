@@ -8,7 +8,7 @@
         <router-link :to="{ name: 'geeko', params: { workforceid: user.workforceid} }">{{user.fullname}}</router-link>
         [<a href="#" v-on:click='logOut'>Logout</a>]
 
-        <img class="user-login-image" :src="avatar()">
+        <img class="user-login-image" :src="avatar">
       </template>
 
       <template v-else>
@@ -32,7 +32,7 @@
 
 <script>
   import config from '../config'
-  import { avatarImage } from '../helpers'
+  import * as helpers from '../helpers'
 
   export default {
     name: 'login',
@@ -46,12 +46,14 @@
       if (this.$route.query.auth_token) {
         localStorage.auth_token = this.$route.query.auth_token
       }
-      this.verifyAuthToken()
+      if (localStorage.auth_token) { this.verifyAuthToken() }
+    },
+    computed: {
+      avatar: function () {
+        return helpers.avatarImage(this.user.image, this.user.email)
+      }
     },
     methods: {
-      avatar () {
-        return avatarImage(this.user.image, this.user.email)
-      },
       verifyAuthToken () {
         // keeping self-reference for the promise
         var login = this
