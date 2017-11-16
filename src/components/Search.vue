@@ -65,7 +65,6 @@
             .then(function (response) {
               search.search_results = response.data.search.results
               let searchHistory = search.search_history().slice(0, 5)
-              console.log(searchHistory.indexOf(search.query))
               if (!(searchHistory.indexOf(search.query) >= 0)) searchHistory.unshift(search.query)
               localStorage.search_history = JSON.stringify(searchHistory)
               // $("#search-input").css('background-image', search_icon)

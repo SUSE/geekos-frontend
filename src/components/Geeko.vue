@@ -9,6 +9,17 @@
     <p><i>{{ geeko.title }}</i></p>
     <p v-if="geeko.email"><a :href="'mailto:' + geeko.email"><i class="email-icon fa fa-envelope-o fa-lg green"></i>{{geeko.email}}</a></p>
     <p v-if="geeko.phone"><i class="fa fa-phone fa-lg green"></i> {{ geeko.phone }}</p>
+    <p v-if="geeko.mobile"><i class="fa fa-phone fa-lg green"></i> {{ geeko.mobile }}</p>
+
+    <p>workforceid: {{ geeko.workforceid }}</p>
+    <p>suse.com username: {{ geeko.username }}</p>
+    <p>managerworkforceid: {{ geeko.managerworkforceid }}</p>
+    <p>costcenter: {{ geeko.costcenter }}</p>
+    <p>country: {{ geeko.country }}</p>
+
+    <p>ismanager: {{ geeko.ismanager }}</p>
+    <p>floor: {{ geeko.floor }}</p>
+
 
 
   </div>
