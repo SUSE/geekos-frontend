@@ -4,23 +4,23 @@
 
     <div class="flip-container search-result" ontouchstart="this.classList.toggle('hover');">
       <div class="flipper">
+
         <div class="front">
           <img class="result-image" v-lazy="avatar" width="160">
           <div class="result-content">
             <b>{{ geeko.fullname }}</b>
           </div>
         </div>
-        <div class="back">
-          <div class="result-content">
-            <h4>{{ geeko.fullname }}</h4>
-            <p><i>{{ geeko.title }}</i></p>
-            <p v-if="geeko.email"><a :href="'mailto:' + geeko.email"><i class="fa fa-envelope-o fa-lg green"></i></a></p>
-            <p v-if="geeko.phone"><i class="fa fa-phone fa-lg green"></i> {{ geeko.phone }}</p>
-            <p>
-              <router-link :to="{ name: 'geeko', params: { workforceid: geeko.workforceid} }">Details</router-link>
-            </p>
+        <router-link :to="{ name: 'geeko', params: { workforceid: geeko.workforceid} }">
+          <div class="back">
+            <div class="result-content">
+              <h4>{{ geeko.fullname }}</h4>
+              <p><i>{{ geeko.title }}</i></p>
+              <p v-if="geeko.email"><a :href="'mailto:' + geeko.email"><i class="fa fa-envelope-o fa-lg green"></i></a></p>
+              <p v-if="geeko.phone"><i class="fa fa-phone fa-lg green"></i> {{ geeko.phone }}</p>
+            </div>
           </div>
-        </div>
+        </router-link>
       </div>
     </div>
   </div>
@@ -68,6 +68,11 @@
 
   .result-content {
     padding: 10px;
+  }
+
+  a, a:visited, a:active {
+    text-decoration: none;
+    color: rgb(51, 51, 51);
   }
 
   /* card flipping */
