@@ -30,13 +30,19 @@
         geeko: {}
       }
     },
+    props: {
+      workforceid: {
+        type: String,
+        required: true
+      }
+    },
     computed: {
       avatar: function () {
         return helpers.avatarImage(this.geeko.image, this.geeko.email)
       }
     },
     mounted: function () {
-      this.loadUser(this.$route.params.workforceid)
+      this.loadUser(this.workforceid)
     },
     methods: {
       loadUser: function (workforceid) {
@@ -51,7 +57,7 @@
       }
     },
     watch: {
-      '$route.params.workforceid' (newId, oldId) {
+      'workforceid' (newId, oldId) {
         if (newId) { this.loadUser(newId) }
       }
     }

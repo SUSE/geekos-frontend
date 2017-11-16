@@ -31,7 +31,8 @@ export default new Router({
     {
       path: '/geeko/:workforceid',
       name: 'geeko',
-      component: Geeko
+      component: Geeko,
+      props: true
     },
     {
       path: '/team/:teamid',
