@@ -3,7 +3,7 @@
   <div id="search">
 
     <h2>Geeko Search: Find your colleagues!</h2>
-    <input id="search-input" class="search" v-on:keyup.enter="search" v-model.trim="search_input" placeholder="What are you searching for?" autofocus>
+    <input id="search-input" class="search" v-on:keyup.enter="search" v-model.trim="query" placeholder="What are you searching for?" autofocus>
 
     <div class="search-results-info" v-if="search_results.length">
       {{search_results.length}} {{'result' | pluralize(search_results.length)}}  found
@@ -27,7 +27,6 @@
 
 
 <script>
-  import router from '../router'
   import config from '../config'
   import GeekoCard from './GeekoCard'
   import TeamCard from './TeamCard'
@@ -40,13 +39,13 @@
     },
     data () {
       return {
-        search_input: this.$route.query.q,
-        search_results: []
+        search_results: [],
+        query: undefined
       }
     },
     methods: {
       search: function () {
-        if (this.search_input) {
+        if (this.query) {
           // var search_icon = $("#search-input").css('background-image')
           // $("#search-input").css('background-image', "url(/images/ajax-loader.gif)")
           var search = this
@@ -54,12 +53,10 @@
           // https://github.com/mzabriskie/axios
           this.axios.get(config.backend_url + '/api/search', {
             params: {
-              q: this.search_input
+              q: this.query
             }
           })
             .then(function (response) {
-              console.log(response.data.search.results)
-              router.replace({name: 'search', query: {q: search.search_input}})
               search.search_results = response.data.search.results
               // $("#search-input").css('background-image', search_icon)
             })
