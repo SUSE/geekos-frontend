@@ -1,1 +1,1 @@
-# Moved to: https://gitlab.suse.de/scc/geekos-frontend
+# Moved to: https://gitlab.suse.de/suse/geekos-frontend
